@@ -19,5 +19,5 @@ A basic card game  with some gacha element.
 
 ## Contributing
 
-the project follow somewhat the trunc based workflow:
+the project follow somewhat the trunk based workflow:
 create feature -> push feature -> pull request and ci/cd -> merge to main
