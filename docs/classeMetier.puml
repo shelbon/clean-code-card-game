@@ -13,7 +13,7 @@ class specialty {
     - healthAtLevel1
     - powerAtLevel1
     - armorAtLevel1
-    - AdditionalPowerAgainstWeakerSpec
+    - additionalPowerAgainstWeakerSpec
     - weakerSpec
 }
 class cardPack{
