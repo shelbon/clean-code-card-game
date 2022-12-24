@@ -1,5 +1,5 @@
 @startuml
-class hero{
+class Hero{
     - name
     - health
     - experiencePoints
@@ -8,37 +8,42 @@ class hero{
     - level
 }
 
-class specialty {
+class Specialty {
     - name
     - healthAtLevel1
     - powerAtLevel1
     - armorAtLevel1
     - additionalPowerAgainstWeakerSpec
-    - weakerSpec
+    - weakerSpeciality
 }
-class cardPack{
+class CardPack{
     - name
     - tokenCost
     - size
-    - probability
 }
-class gatchaRate {
+class ProbabilityByRarity {
       - probability
-}
-class rarity{
-      - name
-}
-class deck  {
-    - name
-}
-class player {
 
 }
-player "1"- "1" deck:\t\t\t\t\t
-hero "*"-"1" rarity:\t\t\t\t
-hero "*" --o "1" specialty
-deck "*" --"*" hero :"\t\t\t\t\t"
-cardPack "*" --"*" hero :"\t\t\t\t"
-(cardPack,rarity) .. gatchaRate
+class Rarity{
+      - name
+}
+class Deck  {
+    - name
+}
+class Player {
+
+}
+class BattleHistory{
+     - opponent
+     - result
+     - battleDate
+}
+Player "1"- "1" Deck:\t\t\t\t\t
+Player "*"-"*" BattleHistory:\t\t\t\t
+Hero "*"-"1" Rarity:\t\t\t\t
+Hero "*" --o "1" Specialty
+Deck "*" --"*" Hero :"\t\t\t\t\t"
+CardPack "*" --"*" Hero :"\t\t\t\t"
+(CardPack,Rarity) .. ProbabilityByRarity
 @end
-refactor specialty
