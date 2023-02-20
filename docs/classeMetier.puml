@@ -1,20 +1,21 @@
 @startuml
-class hero{
-    - name
-    - health
-    - experiencePoints
-    - powerPoints
-    - armorPoints
-    - level
-}
+class hero {
+        - name: String
+        - health: int
+        - experiencePoints: int
+        - attackLevel: int
+        - armorLevel: int
+        - level: int
+        - specialty: Specialty
+        - rarity: Rarity
+    }
 
 class specialty {
     - name
-    - healthAtLevel1
-    - powerAtLevel1
-    - armorAtLevel1
-    - additionalPowerAgainstWeakerSpec
-    - weakerSpec
+    - startingHealth
+    - startingPower
+    - startingArmor
+    - extraPowerAgainst
 }
 class cardPack{
     - name
@@ -25,8 +26,15 @@ class cardPack{
 class gatchaRate {
       - probability
 }
-class rarity{
-      - name
+enum rarity {
+    COMMON(0),
+    RARE(10),
+    LEGENDARY(20);
+
+    - bonus: int
+
+    + Rarity(int bonus)
+    + getBonus(): int
 }
 class deck  {
     - name
@@ -40,5 +48,4 @@ hero "*" --o "1" specialty
 deck "*" --"*" hero :"\t\t\t\t\t"
 cardPack "*" --"*" hero :"\t\t\t\t"
 (cardPack,rarity) .. gatchaRate
-@end
-refactor specialty
+@enduml
