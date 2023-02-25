@@ -16,9 +16,9 @@ import java.util.stream.LongStream;
 public class CardPackFactory {
 
 
-    private CardFactory cardFactory;
+    private HeroFactory cardFactory;
 
-    public CardPackFactory(CardFactory cardFactory) {
+    public CardPackFactory(HeroFactory cardFactory) {
         this.cardFactory = cardFactory;
     }
 
@@ -37,7 +37,7 @@ public class CardPackFactory {
 
 
     public CardPackEntity generateCardPack() {
-        var cards = cardFactory.generateCards();
+        var cards = cardFactory.generateHeroes();
         var rarities = this.generateRarityEntity();
         var cardPackEntity = new CardPackEntity(0L, "Pack argent", cards, 1, 3, new ArrayList<>());
         Double[] probabilty = new Double[]{0.75, 0.20, 0.05};

@@ -1,7 +1,7 @@
 package com.groupe.cardgame.app.application.services;
 
 import com.groupe.cardgame.app.domain.model.Rarity;
-import com.groupe.cardgame.app.infrastructure.out.CardFactory;
+import com.groupe.cardgame.app.infrastructure.out.HeroFactory;
 import com.groupe.cardgame.app.infrastructure.out.CardPackFactory;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.CardPackRepository;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.HeroPullService;
@@ -29,7 +29,7 @@ class HeroPullServiceTest {
 
     @BeforeAll
     static void setUp() {
-        cardAndPackFactory = new CardPackFactory(new CardFactory());
+        cardAndPackFactory = new CardPackFactory(new HeroFactory());
     }
 
     @Test

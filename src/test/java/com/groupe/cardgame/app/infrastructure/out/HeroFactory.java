@@ -15,18 +15,18 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
-public class CardFactory {
+public class HeroFactory {
 
 
     private Faker faker;
     private Random rand;
 
-    public CardFactory() {
+    public HeroFactory() {
         faker = new Faker();
         rand = new Random();
     }
 
-    public List<HeroEntity> generateCards() {
+    public List<HeroEntity> generateHeroes() {
         List<HeroEntity> cardList=new ArrayList<>();
         List<RarityEntity> rarityList = generateRarityEntity();
         List<SpecialtyEntity> specialityList = generateSpecialityEntity();
@@ -39,7 +39,6 @@ public class CardFactory {
              givenRarity.add(rarity.getName());
             SpecialtyEntity speciality = specialityList.get(indexSpeciality);
             cardList.add(new HeroEntity(faker.number().randomNumber(), faker.name().firstName(), speciality.healthPointsAtLevel1(), speciality.attackPowerAtLevel1(), speciality.armorPointsAtLevel1(), 1, rarity, speciality));
-
         }
         return cardList;
     }
