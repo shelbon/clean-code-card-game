@@ -3,5 +3,5 @@ package com.groupe.cardgame.app.infrastructure.springboot.adapter.out;
 import com.groupe.cardgame.app.infrastructure.springboot.models.HeroEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CardRepository  extends JpaRepository<HeroEntity, Long> {
+public interface HeroRepository  extends JpaRepository<HeroEntity, Long> {
 }

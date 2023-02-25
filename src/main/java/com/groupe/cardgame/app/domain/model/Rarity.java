@@ -12,4 +12,16 @@ public enum Rarity {
     public int getBonus() {
         return bonus;
     }
+
+    public int getLegendaryProbability() {
+        return LEGENDARY.getBonus();
+    }
+
+    public int getRareProbability() {
+        return RARE.getBonus() + LEGENDARY.getBonus();
+    }
+
+    public int getCommonProbability() {
+        return COMMON.getBonus() + RARE.getBonus() + LEGENDARY.getBonus();
+    }
 }

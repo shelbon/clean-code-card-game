@@ -36,7 +36,7 @@ public class CardPack {
     }
 
     private Hero generateHero() {
-        
+
         int value = RANDOM.nextInt(100) + 1;
         if (value <= rarity.getLegendaryProbability()) {
             return HeroFactory.createRandomHero(Rarity.LEGENDARY);
