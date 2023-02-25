@@ -29,4 +29,8 @@ public class DeckEntity {
     public void addCards(List<CardEntity> cards) {
         Objects.requireNonNull(this.cards).addAll(cards);
     }
+
+    public List<CardEntity> getCards() {
+        return cards;
+    }
 }
