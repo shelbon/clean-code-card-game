@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GachaPullService{
+      + pull(gachaPack)
+      + pullXtimes(gachaPack,nbOfPull)
+}
+
+
+@enduml
