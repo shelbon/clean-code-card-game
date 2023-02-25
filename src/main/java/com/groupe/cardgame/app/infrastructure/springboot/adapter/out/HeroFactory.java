@@ -1,11 +1,9 @@
-package com.groupe.cardgame.app.infrastructure.adapter.out;
+package com.groupe.cardgame.app.infrastructure.springboot.adapter.out;
 
 import com.github.javafaker.Faker;
 import com.groupe.cardgame.app.domain.Hero;
 import com.groupe.cardgame.app.domain.Specialty;
 import com.groupe.cardgame.app.domain.model.Rarity;
-
-import java.util.List;
 
 public class HeroFactory {
     private static final Faker faker = new Faker();
@@ -34,6 +32,5 @@ public class HeroFactory {
         Specialty specialty =  Specialty.values()[faker.number().numberBetween(0, Specialty.values().length)];
         return createHero(name, rarity, specialty);
     }
-
 
 }
