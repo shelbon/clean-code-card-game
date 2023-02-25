@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 
 @Entity
 @RequiredArgsConstructor
-@NoArgsConstructor(force = true)
 @Table(name = "SPECIALTY")
 public class SpecialtyEntity {
     @Id
@@ -23,6 +22,15 @@ public class SpecialtyEntity {
     private final int additionalAttackPowerAgainstWeakestSpeciality;
     private final String weakerSpeciality;
 
+    public SpecialtyEntity() {
+        this.id = null;
+        this.name = null;
+        this.healthPointsAtLevel1 = 0;
+        this.attackPowerAtLevel1 = 0;
+        this.armorPointsAtLevel1 = 0;
+        this.additionalAttackPowerAgainstWeakestSpeciality = 0;
+        this.weakerSpeciality = null;
+    }
 
     public String name() {
         return name;

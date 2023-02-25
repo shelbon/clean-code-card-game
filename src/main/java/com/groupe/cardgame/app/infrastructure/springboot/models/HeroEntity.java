@@ -15,7 +15,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "HEROES")
 @RequiredArgsConstructor
-@NoArgsConstructor(force = true)
 @Getter
 @Setter
 public class HeroEntity {
@@ -30,6 +29,18 @@ public class HeroEntity {
     private final int level;
     @ManyToOne
     private final RarityEntity rarity;
+
     @ManyToOne
     private final SpecialtyEntity speciality;
+
+    public HeroEntity() {
+        this.id = null;
+        this.name = null;
+        this.health = 0;
+        this.attackPoints = 0;
+        this.armorPoints = 0;
+        this.level = 0;
+        this.rarity = null;
+        this.speciality = null;
+    }
 }

@@ -1,6 +1,5 @@
 package com.groupe.cardgame.app.infrastructure.springboot.models;
 
-import com.groupe.cardgame.app.domain.Hero;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -59,7 +59,7 @@ public class PullCardsController {
             var debugMessage =messageSource.getMessage("simple_not_found_message",null,locale);
           throw new ResourceNotFoundException(message,debugMessage);
         });
-        addHeroesToPlayerService.addCardsToPlayer(cards,user.get());
+        addHeroesToPlayerService.addCardsToPlayerDeck(cards,user.get());
         apiResponse = new ApiResponseWithBody<>(HttpStatus.OK, cards);
 
         return apiResponse;

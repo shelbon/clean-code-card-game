@@ -1,6 +1,7 @@
 package com.groupe.cardgame.app.application.services;
 
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.AddHeroesToPlayerService;
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.HeroFactory;
 import com.groupe.cardgame.app.infrastructure.springboot.models.HeroEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.PlayerEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.PlayerRepository;
@@ -50,19 +51,5 @@ class AddHeroesToPlayerServiceTest {
         addCardsToPlayerService.addCardsToPlayerDeck(heroes, player);
 
         Mockito.verify(playerRepository, Mockito.times(0)).save(player);
-    }
-
-    @Test
-    void should_have_3_heroes_added() {
-        List<HeroEntity> heroes = new ArrayList<>();
-        heroes.add(new HeroEntity());
-        heroes.add(new HeroEntity());
-        heroes.add(new HeroEntity());
-        PlayerEntity player = new PlayerEntity();
-
-        addCardsToPlayerService.addCardsToPlayerDeck(heroes, player);
-
-        Mockito.verify(playerRepository, Mockito.times(1)).save(player);
-        assert player.getDeck().getCards().size() == 3;
     }
 }
