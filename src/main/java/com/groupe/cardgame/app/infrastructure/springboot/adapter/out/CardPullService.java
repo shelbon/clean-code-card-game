@@ -1,9 +1,9 @@
-package com.groupe.cardgame.app.infra.springboot.adapter.out;
+package com.groupe.cardgame.app.infrastructure.springboot.adapter.out;
 
-import com.groupe.cardgame.app.infra.springboot.adapter.in.exception.CardPackEmptyException;
-import com.groupe.cardgame.app.infra.springboot.models.CardEntity;
-import com.groupe.cardgame.app.infra.springboot.models.CardPackEntity;
-import com.groupe.cardgame.app.infra.springboot.models.CardPackRarity;
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.CardPackEmptyException;
+import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackRarity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

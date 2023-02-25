@@ -1,4 +1,4 @@
-package com.groupe.cardgame.app.infra.springboot.models;
+package com.groupe.cardgame.app.infrastructure.springboot.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

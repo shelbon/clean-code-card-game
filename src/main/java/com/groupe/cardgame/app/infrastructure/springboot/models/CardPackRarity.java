@@ -1,7 +1,6 @@
-package com.groupe.cardgame.app.infra.springboot.models;
+package com.groupe.cardgame.app.infrastructure.springboot.models;
 
 
-import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -10,7 +9,6 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
 
 @Entity
 @RequiredArgsConstructor

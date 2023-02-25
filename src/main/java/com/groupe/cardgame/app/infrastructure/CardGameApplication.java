@@ -1,8 +1,7 @@
-package com.groupe.cardgame.app.infra;
+package com.groupe.cardgame.app.infrastructure;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
 
 @SpringBootApplication(scanBasePackages = "com.groupe.cardgame.app")
 public class CardGameApplication {

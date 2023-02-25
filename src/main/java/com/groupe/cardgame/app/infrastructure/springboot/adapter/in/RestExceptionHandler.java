@@ -1,9 +1,9 @@
-package com.groupe.cardgame.app.infra.springboot.adapter.in;
+package com.groupe.cardgame.app.infrastructure.springboot.adapter.in;
 
 import com.groupe.cardgame.app.application.response.ApiError;
 
-import com.groupe.cardgame.app.infra.springboot.adapter.in.exception.CardPackEmptyException;
-import com.groupe.cardgame.app.infra.springboot.adapter.in.exception.ResourceNotFoundException;
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.CardPackEmptyException;
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

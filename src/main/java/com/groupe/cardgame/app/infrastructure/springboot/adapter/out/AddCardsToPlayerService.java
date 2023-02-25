@@ -1,7 +1,7 @@
-package com.groupe.cardgame.app.infra.springboot.adapter.out;
+package com.groupe.cardgame.app.infrastructure.springboot.adapter.out;
 
-import com.groupe.cardgame.app.infra.springboot.models.CardEntity;
-import com.groupe.cardgame.app.infra.springboot.models.PlayerEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.PlayerEntity;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

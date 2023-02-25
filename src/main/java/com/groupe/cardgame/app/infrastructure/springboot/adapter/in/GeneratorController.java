@@ -1,8 +1,8 @@
-package com.groupe.cardgame.app.infra.springboot.adapter.in;
+package com.groupe.cardgame.app.infrastructure.springboot.adapter.in;
 
 import com.groupe.cardgame.app.application.response.ApiResponse;
 import com.groupe.cardgame.app.application.response.ApiResponseWithBody;
-import com.groupe.cardgame.app.infra.springboot.models.CardEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

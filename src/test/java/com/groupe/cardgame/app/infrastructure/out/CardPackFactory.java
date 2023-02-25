@@ -1,16 +1,15 @@
-package com.groupe.cardgame.app.infra.out;
+package com.groupe.cardgame.app.infrastructure.out;
 
 import com.groupe.cardgame.app.domain.model.Rarity;
-import com.groupe.cardgame.app.infra.springboot.models.CardPackEntity;
-import com.groupe.cardgame.app.infra.springboot.models.CardPackRarity;
-import com.groupe.cardgame.app.infra.springboot.models.CardPackRarityId;
-import com.groupe.cardgame.app.infra.springboot.models.RarityEntity;
-import com.groupe.cardgame.app.infra.springboot.models.SpecialtyEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackRarity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackRarityId;
+import com.groupe.cardgame.app.infrastructure.springboot.models.RarityEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.SpecialtyEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 

@@ -1,10 +1,10 @@
-package com.groupe.cardgame.app.infra.out;
+package com.groupe.cardgame.app.infrastructure.out;
 
 import com.github.javafaker.Faker;
 import com.groupe.cardgame.app.domain.model.Rarity;
-import com.groupe.cardgame.app.infra.springboot.models.CardEntity;
-import com.groupe.cardgame.app.infra.springboot.models.RarityEntity;
-import com.groupe.cardgame.app.infra.springboot.models.SpecialtyEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.RarityEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.SpecialtyEntity;
 
 import java.util.ArrayList;
 import java.util.HashSet;

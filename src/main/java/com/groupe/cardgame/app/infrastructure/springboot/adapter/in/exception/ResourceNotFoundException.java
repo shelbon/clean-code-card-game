@@ -1,4 +1,4 @@
-package com.groupe.cardgame.app.infra.springboot.adapter.in.exception;
+package com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     private String simpleMessage;
