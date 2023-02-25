@@ -31,4 +31,38 @@ class AddCardsToPlayerServiceTest {
 
         Mockito.verify(playerRepository, Mockito.times(1)).save(player);
     }
+
+    @Test
+    void should_not_add_cards_to_player_when_cards_is_null() {
+        List<CardEntity> cards = null;
+        PlayerEntity player = new PlayerEntity();
+
+        addCardsToPlayerService.addCardsToPlayer(cards, player);
+
+        Mockito.verify(playerRepository, Mockito.times(0)).save(player);
+    }
+
+    @Test
+    void should_not_add_cards_to_player_when_player_is_null() {
+        List<CardEntity> cards = new ArrayList<>();
+        PlayerEntity player = null;
+
+        addCardsToPlayerService.addCardsToPlayer(cards, player);
+
+        Mockito.verify(playerRepository, Mockito.times(0)).save(player);
+    }
+
+    @Test
+    void should_have_3_cards_added() {
+        List<CardEntity> cards = new ArrayList<>();
+        cards.add(new CardEntity());
+        cards.add(new CardEntity());
+        cards.add(new CardEntity());
+        PlayerEntity player = new PlayerEntity();
+
+        addCardsToPlayerService.addCardsToPlayer(cards, player);
+
+        Mockito.verify(playerRepository, Mockito.times(1)).save(player);
+        assert player.getDeck().getCards().size() == 3;
+    }
 }
