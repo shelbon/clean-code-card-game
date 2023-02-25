@@ -4,7 +4,6 @@ import com.github.javafaker.Faker;
 import com.groupe.cardgame.app.domain.Hero;
 import com.groupe.cardgame.app.domain.Specialty;
 import com.groupe.cardgame.app.domain.model.Rarity;
-import com.groupe.cardgame.app.infrastructure.springboot.models.SpecialtyEntity;
 
 import java.util.List;
 
