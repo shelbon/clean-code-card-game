@@ -5,7 +5,7 @@ import com.groupe.cardgame.app.application.response.ApiResponse;
 import com.groupe.cardgame.app.application.response.ApiResponseWithBody;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.CardPackEmptyException;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.ResourceNotFoundException;
-import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.AddCardsToPlayerService;
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.AddHeroesToPlayerService;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.CardPackRepository;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.HeroPullService;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.PlayerRepository;
@@ -27,15 +27,15 @@ import java.util.Optional;
 public class PullCardsController {
     private final HeroPullService cardPullService;
     private final CardPackRepository cardPackRepository;
-   private final AddCardsToPlayerService addCardsToPlayerService;
+   private final AddHeroesToPlayerService addHeroesToPlayerService;
     @Autowired
     MessageSource messageSource;
     final private PlayerRepository playerRepository;
 
-    public PullCardsController(HeroPullService cardPullService, CardPackRepository cardPackRepository, AddCardsToPlayerService addCardsToPlayerService, PlayerRepository playerRepository) {
+    public PullCardsController(HeroPullService cardPullService, CardPackRepository cardPackRepository, AddHeroesToPlayerService addHeroesToPlayerService , PlayerRepository playerRepository) {
         this.cardPullService = cardPullService;
         this.cardPackRepository = cardPackRepository;
-        this.addCardsToPlayerService = addCardsToPlayerService;
+        this.addHeroesToPlayerService = addHeroesToPlayerService;
         this.playerRepository = playerRepository;
     }
 
@@ -59,7 +59,7 @@ public class PullCardsController {
             var debugMessage =messageSource.getMessage("simple_not_found_message",null,locale);
           throw new ResourceNotFoundException(message,debugMessage);
         });
-        addCardsToPlayerService.addCardsToPlayer(cards,user.get());
+        addHeroesToPlayerService.addCardsToPlayer(cards,user.get());
         apiResponse = new ApiResponseWithBody<>(HttpStatus.OK, cards);
 
         return apiResponse;
