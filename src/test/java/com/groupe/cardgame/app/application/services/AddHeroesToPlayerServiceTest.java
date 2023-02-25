@@ -1,6 +1,6 @@
 package com.groupe.cardgame.app.application.services;
 
-import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.AddCardsToPlayerService;
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.AddHeroesToPlayerService;
 import com.groupe.cardgame.app.infrastructure.springboot.models.HeroEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.PlayerEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.PlayerRepository;
@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
-class AddHeroToPlayerServiceTest {
+class AddHeroesToPlayerServiceTest {
 
     @InjectMocks
-    private AddCardsToPlayerService addCardsToPlayerService;
+    private AddHeroesToPlayerService addCardsToPlayerService;
 
     @Mock
     private PlayerRepository playerRepository;
@@ -27,7 +27,7 @@ class AddHeroToPlayerServiceTest {
         List<HeroEntity> heroes = new ArrayList<>();
         PlayerEntity player = new PlayerEntity();
 
-        addCardsToPlayerService.addCardsToPlayer(heroes, player);
+        addCardsToPlayerService.addCardsToPlayerDeck(heroes, player);
 
         Mockito.verify(playerRepository, Mockito.times(1)).save(player);
     }
@@ -37,7 +37,7 @@ class AddHeroToPlayerServiceTest {
         List<HeroEntity> heroes = null;
         PlayerEntity player = new PlayerEntity();
 
-        addCardsToPlayerService.addCardsToPlayer(heroes, player);
+        addCardsToPlayerService.addCardsToPlayerDeck(heroes, player);
 
         Mockito.verify(playerRepository, Mockito.times(0)).save(player);
     }
@@ -47,7 +47,7 @@ class AddHeroToPlayerServiceTest {
         List<HeroEntity> heroes = new ArrayList<>();
         PlayerEntity player = null;
 
-        addCardsToPlayerService.addCardsToPlayer(heroes, player);
+        addCardsToPlayerService.addCardsToPlayerDeck(heroes, player);
 
         Mockito.verify(playerRepository, Mockito.times(0)).save(player);
     }
@@ -60,7 +60,7 @@ class AddHeroToPlayerServiceTest {
         heroes.add(new HeroEntity());
         PlayerEntity player = new PlayerEntity();
 
-        addCardsToPlayerService.addCardsToPlayer(heroes, player);
+        addCardsToPlayerService.addCardsToPlayerDeck(heroes, player);
 
         Mockito.verify(playerRepository, Mockito.times(1)).save(player);
         assert player.getDeck().getCards().size() == 3;

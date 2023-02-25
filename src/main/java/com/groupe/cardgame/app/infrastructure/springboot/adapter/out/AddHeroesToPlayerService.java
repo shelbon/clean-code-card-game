@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public final class AddHeroesToPlayerService {
     private final PlayerRepository playerRepository;
-    public void addCardsToPlayer(List<HeroEntity> heroes, PlayerEntity player){
+    public void addCardsToPlayerDeck(List<HeroEntity> heroes, PlayerEntity player){
         player.getDeck().addCards(heroes);
         playerRepository.save(player);
     }

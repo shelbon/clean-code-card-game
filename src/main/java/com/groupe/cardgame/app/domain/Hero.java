@@ -10,9 +10,9 @@ public class Hero {
     private int armorPoints;
     private int attackPower;
     private Rarity rarity;
-    private Speciality speciality;
+    private Specialty speciality;
 
-    public Hero(String name, Rarity rarity, Speciality speciality) {
+    public Hero(String name, Rarity rarity, Specialty speciality) {
         this.name = name;
         this.rarity = rarity;
         this.speciality = speciality;
@@ -21,7 +21,7 @@ public class Hero {
         initStats(speciality);
     }
 
-    private void initStats(Speciality speciality) {
+    private void initStats(Specialty speciality) {
         healthPoints=speciality.healthPointsAtLevel1();
         armorPoints=speciality.armorPointsAtLevel1();
         attackPower=speciality.attackPowerAtLevel1();
@@ -29,7 +29,7 @@ public class Hero {
 
     public Hero(String name, int level, int healthPoints, int experiencePoints,
                 int armorPoints, int attackPower,
-                Rarity rarity, Speciality speciality) {
+                Rarity rarity, Specialty speciality) {
         this.name = name;
         this.level = level;
         this.healthPoints = healthPoints;

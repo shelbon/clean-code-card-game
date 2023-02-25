@@ -52,6 +52,6 @@ public class HeroFactory {
     private List<SpecialtyEntity> generateSpecialityEntity() {
         return List.of(new SpecialtyEntity(0L, "Tank", 1000, 100, 20, 20, "Mage")
                 , new SpecialtyEntity(1L, "Assasin", 800, 200, 5, 30, "Tank"),
-                new SpecialtyEntity(2L, "Mage", 700, 150, 10, 25, "Assasin"));
+                   new SpecialtyEntity(2L, "Mage", 700, 150, 10, 25, "Assasin"));
     }
 }
