@@ -7,10 +7,10 @@ import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.Ca
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.ResourceNotFoundException;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.AddCardsToPlayerService;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.CardPackRepository;
-import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.CardPullService;
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.HeroPullService;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.PlayerRepository;
-import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.HeroEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -25,14 +25,14 @@ import java.util.Optional;
 @RestController
 
 public class PullCardsController {
-    private final CardPullService cardPullService;
+    private final HeroPullService cardPullService;
     private final CardPackRepository cardPackRepository;
    private final AddCardsToPlayerService addCardsToPlayerService;
     @Autowired
     MessageSource messageSource;
     final private PlayerRepository playerRepository;
 
-    public PullCardsController(CardPullService cardPullService, CardPackRepository cardPackRepository, AddCardsToPlayerService addCardsToPlayerService, PlayerRepository playerRepository) {
+    public PullCardsController(HeroPullService cardPullService, CardPackRepository cardPackRepository, AddCardsToPlayerService addCardsToPlayerService, PlayerRepository playerRepository) {
         this.cardPullService = cardPullService;
         this.cardPackRepository = cardPackRepository;
         this.addCardsToPlayerService = addCardsToPlayerService;
@@ -48,7 +48,7 @@ public class PullCardsController {
        if(user.isEmpty()){
            throw new IllegalArgumentException("some input is not valid");
        }
-        java.util.List<CardEntity> cards = new ArrayList<>();
+        java.util.List<HeroEntity> cards = new ArrayList<>();
         cardPack.ifPresentOrElse(pack -> {
             if (pack.getCards().isEmpty()) {
                 throw new CardPackEmptyException("Card pack is empty");

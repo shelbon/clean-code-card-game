@@ -13,12 +13,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "CARDS")
+@Table(name = "HEROES")
 @RequiredArgsConstructor
 @NoArgsConstructor(force = true)
 @Getter
 @Setter
-public class CardEntity {
+public class HeroEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

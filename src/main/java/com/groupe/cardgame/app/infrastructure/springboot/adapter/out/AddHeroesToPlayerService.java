@@ -1,6 +1,6 @@
 package com.groupe.cardgame.app.infrastructure.springboot.adapter.out;
 
-import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.HeroEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.PlayerEntity;
 
 import lombok.RequiredArgsConstructor;
@@ -10,10 +10,10 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public final class AddCardsToPlayerService {
+public final class AddHeroesToPlayerService {
     private final PlayerRepository playerRepository;
-    public void addCardsToPlayer(List<CardEntity> cards, PlayerEntity player){
-        player.getDeck().addCards(cards);
+    public void addCardsToPlayer(List<HeroEntity> heroes, PlayerEntity player){
+        player.getDeck().addCards(heroes);
         playerRepository.save(player);
     }
 }

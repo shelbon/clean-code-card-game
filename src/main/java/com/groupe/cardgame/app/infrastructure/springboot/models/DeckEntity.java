@@ -1,5 +1,6 @@
 package com.groupe.cardgame.app.infrastructure.springboot.models;
 
+import com.groupe.cardgame.app.domain.Hero;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,14 +24,14 @@ public class DeckEntity {
     private final Long id;
     private final String name;
     @ManyToMany
-    private final List<CardEntity> cards;
+    private final List<HeroEntity> heroes;
     @OneToOne
     private final PlayerEntity player;
-    public void addCards(List<CardEntity> cards) {
-        Objects.requireNonNull(this.cards).addAll(cards);
+    public void addCards(List<HeroEntity> cards) {
+        Objects.requireNonNull(this.heroes).addAll(cards);
     }
 
-    public List<CardEntity> getCards() {
-        return cards;
+    public List<HeroEntity> getCards() {
+        return heroes;
     }
 }
