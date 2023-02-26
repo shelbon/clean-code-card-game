@@ -11,7 +11,6 @@ import com.groupe.cardgame.app.infrastructure.springboot.adapter.services.CardPu
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.PlayerRepository;
 import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackEntity;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +23,7 @@ import java.util.Optional;
 
 @RestController
 
-public class PullCardsController {
+public class PullHeroesController {
     private final CardPullService cardPullService;
     private final CardPackRepository cardPackRepository;
    private final AddCardsToPlayerService addCardsToPlayerService;
@@ -32,7 +31,7 @@ public class PullCardsController {
     final MessageSource messageSource;
     final private PlayerRepository playerRepository;
 
-    public PullCardsController(CardPullService cardPullService, CardPackRepository cardPackRepository, AddCardsToPlayerService addCardsToPlayerService, MessageSource messageSource, PlayerRepository playerRepository) {
+    public PullHeroesController(CardPullService cardPullService, CardPackRepository cardPackRepository, AddCardsToPlayerService addCardsToPlayerService, MessageSource messageSource, PlayerRepository playerRepository) {
         this.cardPullService = cardPullService;
         this.cardPackRepository = cardPackRepository;
         this.addCardsToPlayerService = addCardsToPlayerService;
