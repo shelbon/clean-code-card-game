@@ -50,6 +50,9 @@ public class PullHeroesController {
         if (user.isEmpty()) {
             throw new IllegalArgumentException("some input is not valid");
         }
+        if (pullHeroesQuery.numberOfPulls() < 1) {
+            throw new PullHeroesException("Number of pulls should be greater than or equal to 1");
+        }
         java.util.List<HeroEntity> cards = new ArrayList<>();
         cardPack.ifPresentOrElse(pack -> {
             int pullTotalCost = pack.getTokenCost() * pullHeroesQuery.numberOfPulls();
