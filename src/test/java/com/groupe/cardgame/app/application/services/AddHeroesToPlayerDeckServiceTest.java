@@ -1,6 +1,6 @@
 package com.groupe.cardgame.app.application.services;
 
-import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.AddHeroesToPlayerService;
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.AddHeroesToPlayerDeckService;
 import com.groupe.cardgame.app.infrastructure.springboot.models.DeckEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.HeroEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.PlayerEntity;
@@ -19,10 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class AddHeroesToPlayerServiceTest {
+class AddHeroesToPlayerDeckServiceTest {
 
     @InjectMocks
-    private AddHeroesToPlayerService addHeroesToPlayerService;
+    private AddHeroesToPlayerDeckService addHeroesToPlayerDeckService;
 
     @Mock
     private PlayerRepository playerRepository;
@@ -40,7 +40,7 @@ class AddHeroesToPlayerServiceTest {
         when(playerRepository.save(player)).thenReturn(player);
 
         // When
-        addHeroesToPlayerService.addCardsToPlayerDeck(heroes, player);
+        addHeroesToPlayerDeckService.addHeroesToPlayerDeck(heroes, player);
 
         // Then
         verify(playerRepository, times(1)).save(player);
@@ -51,7 +51,7 @@ class AddHeroesToPlayerServiceTest {
     void should_not_add_heroes_to_player_when_heroes_is_null() {
         PlayerEntity player = new PlayerEntity(1L, "test player", new DeckEntity());
 
-        assertThrows(IllegalArgumentException.class, () -> addHeroesToPlayerService.addCardsToPlayerDeck(null, player));
+        assertThrows(IllegalArgumentException.class, () -> addHeroesToPlayerDeckService.addHeroesToPlayerDeck(null, player));
         verifyNoInteractions(playerRepository);
     }
 
@@ -65,7 +65,7 @@ class AddHeroesToPlayerServiceTest {
         heroes.add(hero2);
 
         // When/Then
-        assertThrows(IllegalArgumentException.class, () -> addHeroesToPlayerService.addCardsToPlayerDeck(heroes, null));
+        assertThrows(IllegalArgumentException.class, () -> addHeroesToPlayerDeckService.addHeroesToPlayerDeck(heroes, null));
         verifyNoInteractions(playerRepository);
     }
 }

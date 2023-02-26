@@ -18,10 +18,10 @@ public enum Rarity {
     }
 
     public int getRareProbability() {
-        return RARE.getBonus() + LEGENDARY.getBonus();
+        return RARE.getBonus();
     }
 
     public int getCommonProbability() {
-        return COMMON.getBonus() + RARE.getBonus() + LEGENDARY.getBonus();
+        return COMMON.getBonus();
     }
 }
