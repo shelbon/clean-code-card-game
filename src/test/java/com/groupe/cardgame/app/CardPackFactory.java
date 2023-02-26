@@ -1,4 +1,4 @@
-package com.groupe.cardgame.app.infrastructure.out;
+package com.groupe.cardgame.app;
 
 import com.groupe.cardgame.app.domain.model.Rarity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackEntity;
@@ -46,5 +46,7 @@ public class CardPackFactory {
                 .toList();
         cardPackEntity.getCardPackRarities().addAll(cardPackRarities);
         return cardPackEntity;
+
+
     }
 }

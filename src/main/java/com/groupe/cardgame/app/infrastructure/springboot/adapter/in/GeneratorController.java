@@ -37,4 +37,5 @@ public class GeneratorController {
           heroList.add(heroEntity);
           return new ApiResponseWithBody<>(HttpStatus.OK, heroList);
      }
+
 }

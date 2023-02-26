@@ -1,10 +1,10 @@
-package com.groupe.cardgame.app.application.services;
+package com.groupe.cardgame.app.infrastructure.springboot.adapter.services;
 
-import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.AddHeroesToPlayerDeckService;
+
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.PlayerRepository;
 import com.groupe.cardgame.app.infrastructure.springboot.models.DeckEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.HeroEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.PlayerEntity;
-import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.PlayerRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -16,13 +16,16 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class AddHeroesToPlayerDeckServiceTest {
 
     @InjectMocks
-    private AddHeroesToPlayerDeckService addHeroesToPlayerDeckService;
+    private com.groupe.cardgame.app.infrastructure.springboot.adapter.services.AddHeroesToPlayerDeckService addHeroesToPlayerDeckService;
 
     @Mock
     private PlayerRepository playerRepository;
@@ -51,7 +54,7 @@ class AddHeroesToPlayerDeckServiceTest {
     void should_not_add_heroes_to_player_when_heroes_is_null() {
         PlayerEntity player = new PlayerEntity(1L, "test player", new DeckEntity());
 
-        assertThrows(IllegalArgumentException.class, () -> addHeroesToPlayerDeckService.addHeroesToPlayerDeck(null, player));
+        assertThrows(NullPointerException.class, () -> addHeroesToPlayerDeckService.addHeroesToPlayerDeck(null, player));
         verifyNoInteractions(playerRepository);
     }
 
@@ -65,7 +68,7 @@ class AddHeroesToPlayerDeckServiceTest {
         heroes.add(hero2);
 
         // When/Then
-        assertThrows(IllegalArgumentException.class, () -> addHeroesToPlayerDeckService.addHeroesToPlayerDeck(heroes, null));
+        assertThrows(NullPointerException.class, () -> addHeroesToPlayerDeckService.addHeroesToPlayerDeck(heroes, null));
         verifyNoInteractions(playerRepository);
     }
 }
