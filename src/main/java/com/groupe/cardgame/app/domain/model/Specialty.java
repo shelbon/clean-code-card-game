@@ -1,37 +1,42 @@
 package com.groupe.cardgame.app.domain.model;
 
-class Specialty {
-    private String name;
-    private int startingHealth;
-    private int startingPower;
-    private int startingArmor;
-    private int extraPowerAgainst;
+public enum Specialty {
+    TANK(1000, 20, 100, 20, "ASSASSIN"),
+    MAGE(700, 10, 150, 25, "TANK"),
+    ASSASSIN(800, 5, 200, 30, "MAGE");
 
-    public Specialty(String name, int startingHealth, int startingPower, int startingArmor, int extraPowerAgainst) {
-        this.name = name;
-        this.startingHealth = startingHealth;
-        this.startingPower = startingPower;
-        this.startingArmor = startingArmor;
-        this.extraPowerAgainst = extraPowerAgainst;
+    private int healthPointsAtLevel1;
+    private int armorPointsAtLevel1;
+    private int attackPowerAtLevel1;
+    private int additionalAttackPowerAgainstWeakestSpeciality;
+    private String weakerSpeciality;
+
+    Specialty(int healthPointsAtLevel1, int armorPointsAtLevel1, int attackPowerAtLevel1,
+              int additionalAttackPowerAgainstWeakestSpeciality, String weakerSpeciality) {
+        this.healthPointsAtLevel1 = healthPointsAtLevel1;
+        this.armorPointsAtLevel1 = armorPointsAtLevel1;
+        this.attackPowerAtLevel1 = attackPowerAtLevel1;
+        this.additionalAttackPowerAgainstWeakestSpeciality = additionalAttackPowerAgainstWeakestSpeciality;
+        this.weakerSpeciality = weakerSpeciality;
     }
 
-    public String getName() {
-        return name;
+    public int healthPointsAtLevel1() {
+        return healthPointsAtLevel1;
     }
 
-    public int getStartingHealth() {
-        return startingHealth;
+    public int armorPointsAtLevel1() {
+        return armorPointsAtLevel1;
     }
 
-    public int getStartingPower() {
-        return startingPower;
+    public int attackPowerAtLevel1() {
+        return attackPowerAtLevel1;
     }
 
-    public int getStartingArmor() {
-        return startingArmor;
+    public int additionalAttackPowerAgainstWeakestSpeciality() {
+        return additionalAttackPowerAgainstWeakestSpeciality;
     }
 
-    public int getExtraPowerAgainst() {
-        return extraPowerAgainst;
+    public String weakerSpeciality() {
+        return weakerSpeciality;
     }
 }

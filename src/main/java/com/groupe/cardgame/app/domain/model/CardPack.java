@@ -14,7 +14,6 @@ public class CardPack {
     public CardPack(Rarity rarity, int packSize) {
         this.rarity = rarity;
         this.packSize = packSize;
-        openPack();
     }
 
     public List<Hero> getHeroes() {
@@ -27,23 +26,6 @@ public class CardPack {
 
     public int getPackSize() {
         return packSize;
-    }
-
-    private void openPack() {
-        for (int i = 0; i < packSize; i++) {
-            heroes.add(generateHero());
-        }
-    }
-
-    private Hero generateHero() {
-        int value = RANDOM.nextInt(100) + 1;
-        if (value <= rarity.getLegendaryProbability()) {
-            return HeroFactory.createRandomHero(Rarity.LEGENDARY);
-        } else if (value <= rarity.getRareProbability()) {
-            return HeroFactory.createRandomHero(Rarity.RARE);
-        } else {
-            return HeroFactory.createRandomHero(Rarity.COMMON);
-        }
     }
 
 }

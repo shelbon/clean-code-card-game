@@ -2,7 +2,7 @@ package com.groupe.cardgame.app.infrastructure.out;
 
 import com.github.javafaker.Faker;
 import com.groupe.cardgame.app.domain.model.Rarity;
-import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.HeroEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.RarityEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.SpecialtyEntity;
 
@@ -15,19 +15,19 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
-public class CardFactory {
+public class HeroFactory {
 
 
     private Faker faker;
     private Random rand;
 
-    public CardFactory() {
+    public HeroFactory() {
         faker = new Faker();
         rand = new Random();
     }
 
-    public List<CardEntity> generateCards() {
-        List<CardEntity> cardList=new ArrayList<>();
+    public List<HeroEntity> generateHeroes() {
+        List<HeroEntity> cardList=new ArrayList<>();
         List<RarityEntity> rarityList = generateRarityEntity();
         List<SpecialtyEntity> specialityList = generateSpecialityEntity();
         Set<String> givenRarity = new HashSet<>();
@@ -38,8 +38,7 @@ public class CardFactory {
             RarityEntity rarity = rarityList.get(index);
              givenRarity.add(rarity.getName());
             SpecialtyEntity speciality = specialityList.get(indexSpeciality);
-            cardList.add(new CardEntity(faker.number().randomNumber(), faker.name().firstName(), speciality.healthPointsAtLevel1(), speciality.attackPowerAtLevel1(), speciality.armorPointsAtLevel1(), 1, rarity, speciality));
-
+            cardList.add(new HeroEntity(faker.number().randomNumber(), faker.name().firstName(), speciality.healthPointsAtLevel1(), speciality.attackPowerAtLevel1(), speciality.armorPointsAtLevel1(), 1, rarity, speciality));
         }
         return cardList;
     }
@@ -53,6 +52,6 @@ public class CardFactory {
     private List<SpecialtyEntity> generateSpecialityEntity() {
         return List.of(new SpecialtyEntity(0L, "Tank", 1000, 100, 20, 20, "Mage")
                 , new SpecialtyEntity(1L, "Assasin", 800, 200, 5, 30, "Tank"),
-                new SpecialtyEntity(2L, "Mage", 700, 150, 10, 25, "Assasin"));
+                   new SpecialtyEntity(2L, "Mage", 700, 150, 10, 25, "Assasin"));
     }
 }

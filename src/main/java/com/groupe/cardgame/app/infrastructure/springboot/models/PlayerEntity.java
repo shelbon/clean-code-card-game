@@ -20,6 +20,13 @@ public final class PlayerEntity {
     private String username;
     @OneToOne
     private DeckEntity deck;
+
+    public PlayerEntity(Long id, String username, DeckEntity deck) {
+        this.id = id;
+        this.username = username;
+        this.deck = deck;
+    }
+
 //    @OneToMany
 //    private List<CardPackEntity> cardPacks;
 

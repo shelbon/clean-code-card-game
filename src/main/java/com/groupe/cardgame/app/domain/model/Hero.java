@@ -3,6 +3,11 @@ package com.groupe.cardgame.app.domain.model;
 public class Hero {
     private String name;
     private int health;
+
+    public String getName() {
+        return name;
+    }
+
     private int experiencePoints;
     private int attackLevel;
     private int armorLevel;
