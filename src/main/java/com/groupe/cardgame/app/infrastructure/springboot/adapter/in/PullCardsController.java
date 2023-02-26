@@ -1,13 +1,13 @@
 package com.groupe.cardgame.app.infrastructure.springboot.adapter.in;
 
-import com.groupe.cardgame.app.application.PullCardsQuery;
+import com.groupe.cardgame.app.application.port.in.PullCardsQuery;
 import com.groupe.cardgame.app.application.response.ApiResponse;
 import com.groupe.cardgame.app.application.response.ApiResponseWithBody;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.CardPackEmptyException;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.ResourceNotFoundException;
-import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.AddCardsToPlayerService;
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.services.AddCardsToPlayerService;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.CardPackRepository;
-import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.CardPullService;
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.services.CardPullService;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.PlayerRepository;
 import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackEntity;
@@ -28,14 +28,15 @@ public class PullCardsController {
     private final CardPullService cardPullService;
     private final CardPackRepository cardPackRepository;
    private final AddCardsToPlayerService addCardsToPlayerService;
-    @Autowired
-    MessageSource messageSource;
+
+    final MessageSource messageSource;
     final private PlayerRepository playerRepository;
 
-    public PullCardsController(CardPullService cardPullService, CardPackRepository cardPackRepository, AddCardsToPlayerService addCardsToPlayerService, PlayerRepository playerRepository) {
+    public PullCardsController(CardPullService cardPullService, CardPackRepository cardPackRepository, AddCardsToPlayerService addCardsToPlayerService, MessageSource messageSource, PlayerRepository playerRepository) {
         this.cardPullService = cardPullService;
         this.cardPackRepository = cardPackRepository;
         this.addCardsToPlayerService = addCardsToPlayerService;
+        this.messageSource = messageSource;
         this.playerRepository = playerRepository;
     }
 

@@ -1,4 +1,4 @@
-package com.groupe.cardgame.app.infrastructure.out;
+package com.groupe.cardgame.app;
 
 import com.groupe.cardgame.app.domain.model.Rarity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackEntity;
@@ -39,7 +39,7 @@ public class CardPackFactory {
     public CardPackEntity generateCardPack() {
         var cards = cardFactory.generateCards();
         var rarities = this.generateRarityEntity();
-        var cardPackEntity = new CardPackEntity(0L, "Pack argent", cards, 1, 3, new ArrayList<>());
+        CardPackEntity cardPackEntity = new CardPackEntity(0L, "Pack argent", cards, 1, 3, new ArrayList<>());
         Double[] probabilty = new Double[]{0.75, 0.20, 0.05};
         var cardPackRarities = LongStream.range(0, rarities.size())
                 .mapToObj(i -> new CardPackRarity(new CardPackRarityId(i, 0L), rarities.get((int) i), cardPackEntity, probabilty[(int) i]))

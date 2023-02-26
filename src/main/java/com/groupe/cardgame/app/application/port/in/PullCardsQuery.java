@@ -1,4 +1,4 @@
-package com.groupe.cardgame.app.application;
+package com.groupe.cardgame.app.application.port.in;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

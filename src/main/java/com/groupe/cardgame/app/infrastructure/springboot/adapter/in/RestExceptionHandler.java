@@ -3,6 +3,7 @@ package com.groupe.cardgame.app.infrastructure.springboot.adapter.in;
 import com.groupe.cardgame.app.application.response.ApiError;
 
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.CardPackEmptyException;
+import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.PlayerNotCreatedException;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -71,6 +72,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(CardPackEmptyException.class)
     public ResponseEntity<Object> handleCardPackEmptyException(CardPackEmptyException exc){
         ApiError apiError = new ApiError(NOT_FOUND);
+        apiError.setMessage(exc.getMessage());
+        apiError.setDebugMessage(exc.getMessage());
+        return buildResponseEntity(apiError);
+    }
+    @ExceptionHandler({PlayerNotCreatedException.class})
+    public ResponseEntity<Object> handlePlayerNotCreatedException(PlayerNotCreatedException exc){
+        ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR);
         apiError.setMessage(exc.getMessage());
         apiError.setDebugMessage(exc.getMessage());
         return buildResponseEntity(apiError);

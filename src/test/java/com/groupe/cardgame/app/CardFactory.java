@@ -1,4 +1,4 @@
-package com.groupe.cardgame.app.infrastructure.out;
+package com.groupe.cardgame.app;
 
 import com.github.javafaker.Faker;
 import com.groupe.cardgame.app.domain.model.Rarity;

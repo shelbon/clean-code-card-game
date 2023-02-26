@@ -1,5 +1,4 @@
-package com.groupe.cardgame.app.domain;
-import com.groupe.cardgame.app.domain.model.Rarity;
+package com.groupe.cardgame.app.domain.model;
 import java.util.Objects;
 
 public record CardPackRate(Rarity rarity, double rate) {

@@ -7,16 +7,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-@Table(name ="DECK" )
+@Table(name = "DECK")
 public class DeckEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +25,23 @@ public class DeckEntity {
     private final List<CardEntity> cards;
     @OneToOne
     private final PlayerEntity player;
+
     public void addCards(List<CardEntity> cards) {
         Objects.requireNonNull(this.cards).addAll(cards);
+    }
+
+    public DeckEntity() {
+        this.cards = new ArrayList<>();
+        this.id = null;
+        this.name = null;
+        this.player = null;
+    }
+
+    public DeckEntity(PlayerEntity playerEntity) {
+        this.cards = new ArrayList<>();
+        this.id = null;
+        this.name = null;
+        this.player = playerEntity;
     }
 
     public List<CardEntity> getCards() {

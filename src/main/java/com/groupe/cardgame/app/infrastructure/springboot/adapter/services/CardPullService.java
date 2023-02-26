@@ -1,4 +1,4 @@
-package com.groupe.cardgame.app.infrastructure.springboot.adapter.out;
+package com.groupe.cardgame.app.infrastructure.springboot.adapter.services;
 
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.CardPackEmptyException;
 import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
