@@ -1,16 +1,12 @@
 package com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception;
 
 public class PullHeroesException extends RuntimeException {
-    private String simpleMessage;
-    public PullHeroesException(String detailMessage, String debugMessage) {
-        super(debugMessage);
-        simpleMessage = detailMessage;
-    }
-    public String getSimpleMessage() {
-        return simpleMessage;
+    private String message;
+    public PullHeroesException(String message) {
+        super(message);
     }
 
     public String getMessage() {
-        return simpleMessage;
+        return message;
     }
 }
