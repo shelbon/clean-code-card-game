@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
 
@@ -44,6 +43,7 @@ public class PullHeroesController {
     @PostMapping("/cards")
     public ApiResponse pullCards(@RequestBody PullHeroesQuery pullHeroesQuery, Locale locale) {
         ApiResponse apiResponse;
+
         Optional<CardPackEntity> cardPack = cardPackRepository
                 .findById(pullHeroesQuery.packId());
         var user = playerRepository.findById(pullHeroesQuery.userId());
@@ -52,18 +52,24 @@ public class PullHeroesController {
         }
         java.util.List<HeroEntity> cards = new ArrayList<>();
         cardPack.ifPresentOrElse(pack -> {
+            int pullTotalCost = pack.getTokenCost() * pullHeroesQuery.numberOfPulls();
             if (pack.getCards().isEmpty()) {
                 throw new CardPackEmptyException("Card pack is empty");
             }
+
+            if (pullTotalCost > user.get().getNumberOfTokens()) {
+                throw new PullHeroesException("You don't have enough tokens");
+            }
             cards.addAll(heroPullService.pullXTimes(pack, pullHeroesQuery.numberOfPulls()));
+            addCardsToPlayerService.addHeroesToPlayerDeck(cards, user.get());
+            user.get().updateNumberOfTokens(Math.max(user.get().getNumberOfTokens() - pullTotalCost, 0));
+            playerRepository.save(user.get());
 
         }, () -> {
             var message = messageSource.getMessage("debug_not_found", null, locale);
             var debugMessage = messageSource.getMessage("simple_not_found_message", null, locale);
             throw new ResourceNotFoundException(message, debugMessage);
         });
-        addCardsToPlayerService.addHeroesToPlayerDeck(cards, user.get());
-
         apiResponse = new ApiResponseWithBody<>(HttpStatus.OK, cards);
 
         return apiResponse;
