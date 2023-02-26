@@ -10,18 +10,18 @@ public class HeroFactory {
     public static Hero createHero(String name, Rarity rarity, Specialty specialty) {
         int level = 1;
         int healthPoints = specialty.healthPointsAtLevel1();
-        int armorPoints = specialty.armorPointsAtLevel1();
-        int attackPower = specialty.attackPowerAtLevel1();
-
+        int armorPointsAtLevel1 = specialty.armorPointsAtLevel1();
+        int attackPowerAtLevel1 = specialty.attackPowerAtLevel1();
+        int experiencePoints = 0;
         return new Hero(
                         name,
-                        level,
                         healthPoints,
-                        0,
-                        armorPoints,
-                        attackPower,
-                specialty,
-                rarity
+                        experiencePoints,
+                        attackPowerAtLevel1,
+                        armorPointsAtLevel1,
+                        level,
+                        specialty,
+                        rarity
                 );
     }
 
