@@ -1,10 +1,10 @@
 package com.groupe.cardgame.app.infrastructure.springboot.adapter.services;
 
-import com.groupe.cardgame.app.domain.model.Rarity;
-import com.groupe.cardgame.app.CardFactory;
 import com.groupe.cardgame.app.CardPackFactory;
+import com.groupe.cardgame.app.HeroFactory;
+import com.groupe.cardgame.app.domain.model.Rarity;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.CardPackRepository;
-import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.HeroEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,13 +15,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class CardPullServiceTest {
+class HeroPullServiceTest {
     @InjectMocks
-    private CardPullService cardPullService;
+    private com.groupe.cardgame.app.infrastructure.springboot.adapter.services.HeroPullService cardPullService;
 
     @Mock
     private static CardPackRepository cardPackRepository;
@@ -29,7 +28,7 @@ class CardPullServiceTest {
 
     @BeforeAll
     static void setUp() {
-        cardAndPackFactory = new CardPackFactory(new CardFactory());
+        cardAndPackFactory = new CardPackFactory(new HeroFactory());
     }
 
     @Test
@@ -38,7 +37,7 @@ class CardPullServiceTest {
         when(cardPackRepository.findById(returnedCardPack.getId())).thenReturn(Optional.of(returnedCardPack));
         var cardPack = cardPackRepository.findById(returnedCardPack.getId());
         assertThat(cardPack).isPresent();
-        java.util.List<CardEntity> pulledCard = cardPullService.pullXTimes(cardPack.get(), 3);
+        java.util.List<HeroEntity> pulledCard = cardPullService.pullXTimes(cardPack.get(), 3);
         assertThat(pulledCard).hasSize(9);
     }
 
@@ -48,7 +47,7 @@ class CardPullServiceTest {
         when(cardPackRepository.findById(returnedCardPack.getId())).thenReturn(Optional.of(returnedCardPack));
         var cardPack = cardPackRepository.findById(returnedCardPack.getId());
         assertThat(cardPack).isPresent();
-        java.util.List<CardEntity> pulledCard = cardPullService.pullXTimes(cardPack.get(), 100);
+        java.util.List<HeroEntity> pulledCard = cardPullService.pullXTimes(cardPack.get(), 100);
         int countOfSearchedRarity = pulledCard.stream().reduce(0, (total, hero) -> {
             if (hero.getRarity().getName()
                     .equals(Rarity.LEGENDARY.toString())) {
@@ -67,7 +66,7 @@ class CardPullServiceTest {
         when(cardPackRepository.findById(returnedCardPack.getId())).thenReturn(Optional.of(returnedCardPack));
         var cardPack = cardPackRepository.findById(returnedCardPack.getId());
         assertThat(cardPack).isPresent();
-        java.util.List<CardEntity> pulledCard = cardPullService.pullXTimes(cardPack.get(), 100);
+        java.util.List<HeroEntity> pulledCard = cardPullService.pullXTimes(cardPack.get(), 100);
         int countOfSearchedRarity = pulledCard.stream().reduce(0, (total, hero) -> {
             if (hero.getRarity().getName()
                     .equals(Rarity.RARE.toString())) {
@@ -87,7 +86,7 @@ class CardPullServiceTest {
         when(cardPackRepository.findById(returnedCardPack.getId())).thenReturn(Optional.of(returnedCardPack));
         var cardPack = cardPackRepository.findById(returnedCardPack.getId());
         assertThat(cardPack).isPresent();
-        java.util.List<CardEntity> pulledCard = cardPullService.pullXTimes(cardPack.get(), 100);
+        java.util.List<HeroEntity> pulledCard = cardPullService.pullXTimes(cardPack.get(), 100);
         int countOfSearchedRarity = pulledCard.stream().reduce(0, (total, hero) -> {
             if (hero.getRarity().getName()
                     .equals(Rarity.COMMON.toString())) {

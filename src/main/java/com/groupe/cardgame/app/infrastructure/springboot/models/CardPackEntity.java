@@ -30,19 +30,19 @@ public class CardPackEntity {
     private final Long id;
     private final String name;
     @ManyToMany
-    private final List<CardEntity> cards;
+    private final List<HeroEntity> cards;
     private final int tokenCost;
     private final int cardCount;
     @OneToMany(mappedBy = "cardPack", cascade = CascadeType.ALL)
 
     private  final List<CardPackRarity> cardPackRarities;
 
-    public void addCard(CardEntity card) {
-        cards.add(card);
+    public void addCard(HeroEntity hero) {
+        cards.add(hero);
     }
 
-    public void addCards(List<CardEntity> cards) {
-        cards.addAll(cards);
+    public void addCards(List<HeroEntity> heroes) {
+        cards.addAll(heroes);
     }
 
     public void setCardPackRarities(List<CardPackRarity> newCardPackRarities) {

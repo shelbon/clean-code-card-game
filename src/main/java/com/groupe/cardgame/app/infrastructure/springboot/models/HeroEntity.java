@@ -1,5 +1,6 @@
 package com.groupe.cardgame.app.infrastructure.springboot.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,12 +14,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "CARDS")
+@Table(name = "HEROES")
 @RequiredArgsConstructor
-@NoArgsConstructor(force = true)
 @Getter
 @Setter
-public class CardEntity {
+public class HeroEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -28,8 +28,20 @@ public class CardEntity {
     private final int attackPoints;
     private final int armorPoints;
     private final int level;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.ALL)
     private final RarityEntity rarity;
-    @ManyToOne
+
+    @ManyToOne(cascade= CascadeType.ALL)
     private final SpecialtyEntity speciality;
+
+    public HeroEntity() {
+        this.id = null;
+        this.name = null;
+        this.health = 0;
+        this.attackPoints = 0;
+        this.armorPoints = 0;
+        this.level = 0;
+        this.rarity = null;
+        this.speciality = null;
+    }
 }

@@ -22,29 +22,29 @@ public class DeckEntity {
     private final Long id;
     private final String name;
     @ManyToMany
-    private final List<CardEntity> cards;
+    private final List<HeroEntity> heroes;
     @OneToOne
     private final PlayerEntity player;
 
-    public void addCards(List<CardEntity> cards) {
-        Objects.requireNonNull(this.cards).addAll(cards);
-    }
-
     public DeckEntity() {
-        this.cards = new ArrayList<>();
+        this.heroes = new ArrayList<>();
         this.id = null;
         this.name = null;
         this.player = null;
     }
 
     public DeckEntity(PlayerEntity playerEntity) {
-        this.cards = new ArrayList<>();
+        this.heroes = new ArrayList<>();
         this.id = null;
         this.name = null;
         this.player = playerEntity;
     }
 
-    public List<CardEntity> getCards() {
-        return cards;
+    public void addCards(List<HeroEntity> cards) {
+        Objects.requireNonNull(this.heroes).addAll(cards);
+    }
+
+    public List<HeroEntity> getCards() {
+        return heroes;
     }
 }

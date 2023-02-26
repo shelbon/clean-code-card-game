@@ -1,8 +1,8 @@
 package com.groupe.cardgame.app.infrastructure.springboot.adapter.services;
 
 import com.groupe.cardgame.app.application.port.in.CreatePlayerQuery;
-import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.DTO.SimplePlayerInfo;
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.out.PlayerRepository;
+import com.groupe.cardgame.app.infrastructure.springboot.models.PlayerEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -10,8 +10,6 @@ import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -26,22 +24,22 @@ class CreatePlayerServiceTest {
     @Mock
     private PlayerRepository playerRepository;
     @Captor
-    private ArgumentCaptor<String> usernameCaptor;
+    private ArgumentCaptor<PlayerEntity> playerEntityArgumentCaptor;
 
 
     @Test
     void can_create_player_with_valid_username() {
-        var username = "bob";
-        var createPlayerQuery = new CreatePlayerQuery(username);
-        var newPlayer = new SimplePlayerInfo(0L, username);
-        when(playerRepository.save(any(String.class))).thenReturn(Optional.of(newPlayer));
-        var createdPlayer = createPlayerService.create(createPlayerQuery);
+        var createPlayerQuery = new CreatePlayerQuery("bob");
+        var newPlayer = new PlayerEntity(createPlayerQuery.username());
+        when(playerRepository.save(any(PlayerEntity.class))).thenReturn(newPlayer);
+        var createdPlayer = createPlayerService.create(newPlayer);
 
-        verify(playerRepository).save(usernameCaptor.capture());
+        verify(playerRepository).save(playerEntityArgumentCaptor.capture());
         verifyNoMoreInteractions(playerRepository);
 
-        assertThat(usernameCaptor.getValue()).isEqualTo(username);
-        assertThat(createdPlayer).isPresent();
-        assertThat(createdPlayer.get()).isEqualTo(newPlayer);
+        assertThat(playerEntityArgumentCaptor.getValue()).isEqualTo(newPlayer);
+        assertThat(createdPlayer)
+                .isPresent()
+                .contains(newPlayer);
     }
 }

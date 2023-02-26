@@ -27,4 +27,5 @@ public class CardPack {
     public int getPackSize() {
         return packSize;
     }
+
 }

@@ -39,4 +39,15 @@ public final class PlayerEntity {
         this.deck = deck;
         this.numberOfTokens = 4;
     }
+
+    public PlayerEntity(long id, String username, DeckEntity deck) {
+        this.id = id;
+        this.username = username;
+        this.deck = deck;
+        this.numberOfTokens = 4;
+    }
+
+    public void updateNumberOfTokens(int newNumberOfTokens) {
+        this.numberOfTokens = newNumberOfTokens;
+    }
 }

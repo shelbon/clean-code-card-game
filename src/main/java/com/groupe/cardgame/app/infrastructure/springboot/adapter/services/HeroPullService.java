@@ -1,7 +1,7 @@
 package com.groupe.cardgame.app.infrastructure.springboot.adapter.services;
 
 import com.groupe.cardgame.app.infrastructure.springboot.adapter.in.exception.CardPackEmptyException;
-import com.groupe.cardgame.app.infrastructure.springboot.models.CardEntity;
+import com.groupe.cardgame.app.infrastructure.springboot.models.HeroEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackEntity;
 import com.groupe.cardgame.app.infrastructure.springboot.models.CardPackRarity;
 import org.springframework.stereotype.Service;
@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.Random;
 
 @Service
-public final class CardPullService {
+public final class HeroPullService {
 
     private final Random random;
 
-    public CardPullService() {
+    public HeroPullService() {
         this.random = new Random();
     }
 
 
-    private List<CardEntity> pull(CardPackEntity packOfCard) {
+    private List<HeroEntity> pull(CardPackEntity packOfCard) {
         if (packOfCard.getCards().isEmpty()) {
            throw new CardPackEmptyException("Card pack is empty");
         }
         List<CardPackRarity> probabilityByRates = packOfCard.getCardPackRarities();
         Collections.shuffle(probabilityByRates);
-        List<CardEntity> pulledCard = new ArrayList<>();
+        List<HeroEntity> pulledCard = new ArrayList<>();
         for (int i = 0; i < packOfCard.getCardCount(); i++) {
             double randProbabilty = random.nextDouble(1.0);
             String rarityToPull = "";
@@ -47,7 +47,7 @@ public final class CardPullService {
                 }
             }
             String finalRarityToPull = rarityToPull;
-            List<CardEntity> pullOfCardToPull = packOfCard.getCards().stream()
+            List<HeroEntity> pullOfCardToPull = packOfCard.getCards().stream()
                     .filter(hero -> hero
                             .getRarity().getName()
                             .equals(finalRarityToPull))
@@ -60,8 +60,8 @@ public final class CardPullService {
     }
 
 
-    public java.util.List<CardEntity> pullXTimes(CardPackEntity packOfHero, int numberOfTimes) {
-        List<CardEntity> result = new ArrayList<>();
+    public java.util.List<HeroEntity> pullXTimes(CardPackEntity packOfHero, int numberOfTimes) {
+        List<HeroEntity> result = new ArrayList<>();
         for (int i = 0; i < numberOfTimes; i++) {
             result.addAll(pull(packOfHero));
         }
