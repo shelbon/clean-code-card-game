@@ -29,13 +29,13 @@ public class CardPackEntity {
     @Column(name = "id", nullable = false)
     private final Long id;
     private final String name;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private final List<HeroEntity> cards;
     private final int tokenCost;
     private final int cardCount;
     @OneToMany(mappedBy = "cardPack", cascade = CascadeType.ALL)
 
-    private  final List<CardPackRarity> cardPackRarities;
+    private final List<CardPackRarity> cardPackRarities;
 
     public void addCard(HeroEntity hero) {
         cards.add(hero);

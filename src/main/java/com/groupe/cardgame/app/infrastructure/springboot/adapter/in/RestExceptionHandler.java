@@ -20,7 +20,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @ControllerAdvice
 
-public class RestExceptionHandler extends ResponseEntityExceptionHandler {
+public class RestExceptionHandler   {
     /**
      * Handle MethodArgumentNotValidException. Triggered when an object fails @Valid validation.
      *
@@ -30,8 +30,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
      * @param request WebRequest
      * @return the ApiError object
      */
-
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    protected ResponseEntity<Object> handleValidationExceptions(
             MethodArgumentNotValidException ex,
             HttpHeaders headers,
             HttpStatus status,
