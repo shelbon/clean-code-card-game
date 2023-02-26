@@ -1,9 +1,8 @@
-package com.groupe.cardgame.app.infrastructure.springboot.adapter.out;
+package com.groupe.cardgame.app.domain.model;
 
 import com.github.javafaker.Faker;
-import com.groupe.cardgame.app.domain.model.Hero;
-import com.groupe.cardgame.app.domain.model.Rarity;
-import com.groupe.cardgame.app.domain.model.Specialty;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HeroFactory {
     private static final Faker faker = new Faker();
@@ -33,4 +32,11 @@ public class HeroFactory {
         return createHero(name, rarity, specialty);
     }
 
+    public static List<Hero> createRandomHeroes(int numberOfHeroes) {
+        List<Hero> heroes = new ArrayList<>();
+        for (int i = 0; i < numberOfHeroes; i++) {
+            heroes.add(createRandomHero());
+        }
+        return heroes;
+    }
 }
