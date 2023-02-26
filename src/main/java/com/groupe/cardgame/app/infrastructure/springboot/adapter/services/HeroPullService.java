@@ -52,8 +52,8 @@ public final class HeroPullService {
                             .getRarity().getName()
                             .equals(finalRarityToPull))
                     .toList();
-            int numberToPeek = random.nextInt(pullOfCardToPull.size());
-            pulledCard.add(pullOfCardToPull.get(numberToPeek));
+            int position = random.nextInt(pullOfCardToPull.size());
+            pulledCard.add(pullOfCardToPull.get(position));
         }
         return pulledCard;
 
