@@ -40,6 +40,10 @@ public class DeckEntity {
         this.player = playerEntity;
     }
 
+    public PlayerEntity getPlayer() {
+        return player;
+    }
+
     public void addCards(List<HeroEntity> cards) {
         Objects.requireNonNull(this.heroes).addAll(cards);
     }
