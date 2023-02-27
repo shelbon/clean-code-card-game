@@ -35,4 +35,5 @@ public class CardPackRarity {
         return rate;
     }
 
+
 }

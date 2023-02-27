@@ -55,4 +55,8 @@ public class SpecialtyEntity {
     public String weakestSpeciality() {
         return weakerSpeciality;
     }
+
+    public Long getId() {
+        return id;
+    }
 }
