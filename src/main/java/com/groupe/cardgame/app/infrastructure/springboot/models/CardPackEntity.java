@@ -48,4 +48,14 @@ public class CardPackEntity {
     public void setCardPackRarities(List<CardPackRarity> newCardPackRarities) {
         Objects.requireNonNull(cardPackRarities).addAll(newCardPackRarities);
     }
+
+    public CardPackEntity(String name, int tokenCost, int cardCount) {
+        this.name = name;
+        this.tokenCost = tokenCost;
+        this.cardCount = cardCount;
+        this.cards = List.of();
+        this.cardPackRarities = List.of();
+        this.id = null;
+
+    }
 }

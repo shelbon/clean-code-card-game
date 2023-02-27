@@ -17,6 +17,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
+import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(MockitoExtension.class)
 class CreatePlayerServiceTest {
     @InjectMocks
@@ -28,7 +29,7 @@ class CreatePlayerServiceTest {
 
 
     @Test
-    void can_create_player_with_valid_username() {
+    void cnewPlayeran_create_player_with_valid_username() {
         var createPlayerQuery = new CreatePlayerQuery("bob");
         var newPlayer = new PlayerEntity(createPlayerQuery.username());
         when(playerRepository.save(any(PlayerEntity.class))).thenReturn(newPlayer);
